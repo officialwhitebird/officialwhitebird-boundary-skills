@@ -61,7 +61,7 @@ After the GitHub repository exists, clone it and point your coding agent at `SKI
 git clone https://github.com/officialwhitebird/officialwhitebird-boundary-skills.git
 ```
 
-For pre-publication local review, use this checkout directly and run:
+For local review from this checkout, run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File scripts/run-case-study.ps1
@@ -153,7 +153,7 @@ The visual version is `docs/boundary-case-study.html`.
 
 ## Status
 
-Publish-ready local package. Publishing, pushing, profile updates, and public posts remain owner-gated.
+Public repository. Profile updates and public posts remain owner-gated.
 
 ## License
 
