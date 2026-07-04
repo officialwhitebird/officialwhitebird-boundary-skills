@@ -1,0 +1,18 @@
+{
+  "outputs": [
+    "artifacts/status-report.md"
+  ],
+  "verification": [
+    {
+      "command": "python -m pytest",
+      "exit_code": 0,
+      "log": "2 passed"
+    }
+  ],
+  "gates": [
+    {
+      "name": "publish-approval",
+      "status": "approved"
+    }
+  ]
+}

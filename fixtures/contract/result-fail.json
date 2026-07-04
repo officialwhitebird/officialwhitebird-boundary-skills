@@ -1,0 +1,11 @@
+{
+  "outputs": [],
+  "verification": [],
+  "gates": [],
+  "risks": [
+    {
+      "name": "incomplete-result",
+      "note": "The status report and verification record are missing."
+    }
+  ]
+}

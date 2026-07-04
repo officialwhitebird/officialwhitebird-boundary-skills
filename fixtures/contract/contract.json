@@ -1,0 +1,11 @@
+{
+  "outputs": [
+    "artifacts/status-report.md"
+  ],
+  "verification": [
+    "python -m pytest"
+  ],
+  "gates": [
+    "publish-approval"
+  ]
+}

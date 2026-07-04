@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "default_unmatched": {
+    "classification": "owner_gated",
+    "decision": "pause"
+  },
+  "match": {
+    "case_sensitive": false,
+    "collapse_internal_whitespace": true,
+    "command_normalization": {
+      "canonicalize_python_m_pip": true,
+      "canonical_pip_token": "pip"
+    }
+  },
+  "precedence": [
+    "forbidden",
+    "reject",
+    "scoped_local_required_flags",
+    "owner_gated",
+    "scoped_local",
+    "auto_runnable",
+    "default_unmatched"
+  ],
+  "auto_runnable": {
+    "command_prefixes": [
+      "git status --short",
+      "git diff --"
+    ]
+  },
+  "scoped_local": {
+    "command_prefixes": [
+      "python -m pytest"
+    ],
+    "required_flag_rules": [
+      {
+        "name": "offline_editable_install_with_dev_extras",
+        "command_contains_all": [
+          "pip install",
+          "--no-index",
+          "--no-build-isolation",
+          "-e .[dev]"
+        ],
+        "classification": "scoped_local",
+        "decision": "allow"
+      }
+    ]
+  },
+  "owner_gated": {
+    "command_prefixes": [
+      "git push",
+      "git reset --hard"
+    ],
+    "normalized_patterns": [
+      {
+        "name": "remote_index_capable_pip_install",
+        "canonical_command_prefix": "pip install",
+        "classification": "owner_gated",
+        "decision": "pause",
+        "unless_all_required_flags_rule_matches": "offline_editable_install_with_dev_extras"
+      }
+    ]
+  },
+  "reject": {
+    "path_patterns": [
+      "/home/*/.ssh/*",
+      "/Users/*/.ssh/*",
+      "%USERPROFILE%/.ssh/*"
+    ]
+  },
+  "forbidden": {
+    "command_prefixes": [
+      "sudo",
+      "runas"
+    ]
+  }
+}
